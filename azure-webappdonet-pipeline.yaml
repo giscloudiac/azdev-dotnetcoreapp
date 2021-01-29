@@ -1,6 +1,15 @@
-pool:
-  name: Azure Pipelines
-  demands: java
+stages:
+- stage: Build_Stage
+  displayName: Build Stage
+  jobs:
+  - job: WebApp
+    displayName: Build Web App Job
+    pool:
+      name: Hosted Windows 2019 with VS2019 
+      vmImage: 'windows-2019'
+      demands: java
+    variables:
+      BuildConfiguration: release
 
 steps:
 - task: DotNetCoreCLI@2
